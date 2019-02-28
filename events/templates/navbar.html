@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="#">Django Event Planner</a>
+    <a class="navbar-brand" href="{% url 'home' %}">Event Planner</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -17,10 +17,27 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
         </li>
+        
+        {% if dashboard %}
+        
         <li class="nav-item">
-          <a class="nav-link" href="#">{{ request.user }}</a>
-        </li>
+            <a class="nav-link" href="{% url 'add_event' %}">Create Event</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'booked' %}">Booked Events</a>
+            </li>
+          
         {% endif %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'dashboard' %}">{{ request.user }}</a>
+        </li>
+        
+        <form class="form-inline" action="{% url 'event' %}">
+            <input class="form-control mr-sm-2" placeholder="Search" name="search">
+          </form>
+          
+        {% endif %}
+        
       </ul>
     </div>
   </div>

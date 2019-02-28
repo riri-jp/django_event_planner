@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+    <div class="row justify-content-center">
+    <div class="jumbotron col-8">
+        <form action="{% url 'booking' event.id %}" style="color:rgb(255, 253, 253);"  method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <input type="submit" value="Book" class="btn btn-primary btn-sm rounded-pill">
+        </form>
+    </div>
+    </div>
+{% endblock %}
